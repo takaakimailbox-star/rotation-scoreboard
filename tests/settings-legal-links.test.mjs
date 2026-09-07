@@ -31,7 +31,7 @@ test("Terms, Privacy and Support official sources are cached for offline navigat
   assert.match(terms,/CueScore_Terms_of_Use_v1\.0_Official\.md/);
   assert.match(privacy,/CueScore_Privacy_Policy_v1\.0_Official\.md/);
   assert.match(support,/CueScore_Support_v1\.0_Official\.md/);
-  for(const path of ["./terms.html","./privacy.html","./support.html","./official-document.js?v=1.0-build65-in-app-legal-view-v1","./official-pages.css?v=1.0-build65-in-app-legal-view-v1"])assert.ok(sw.includes(`"${path}"`));
+  for(const path of ["./terms.html","./privacy.html","./support.html","./official-document.js?v=1.0-build66-iap-readiness-v1","./official-pages.css?v=1.0-build66-iap-readiness-v1"])assert.ok(sw.includes(`"${path}"`));
   assert.match(sw,/cache\.put\(event\.request, response\.clone\(\)\)/);
   assert.doesNotMatch(sw,/cache\.put\("\.\/index\.html", response\.clone\(\)\)/);
 });
@@ -42,8 +42,8 @@ test("Terms, Privacy and Support share an accessible in-page Back control",()=>{
     assert.match(page,/<path d="m15 4-8 8 8 8"\/>/);
     assert.match(page,/<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">/);
     assert.match(page,/<div class="legal-scroll-v2"><main class="document">/);
-    assert.match(page,/official-pages\.css\?v=1\.0-build65-in-app-legal-view-v1/);
-    assert.match(page,/official-document\.js\?v=1\.0-build65-in-app-legal-view-v1/);
+    assert.match(page,/official-pages\.css\?v=1\.0-build66-iap-readiness-v1/);
+    assert.match(page,/official-document\.js\?v=1\.0-build66-iap-readiness-v1/);
   }
   assert.match(styles,/\.legal-back-v1\{[^}]*min-width:48px;min-height:48px/);
   assert.match(styles,/padding-top:env\(safe-area-inset-top\)/);
