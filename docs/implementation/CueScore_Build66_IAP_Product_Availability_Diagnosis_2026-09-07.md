@@ -24,12 +24,16 @@
 1. App Store Connectに日本語IAP localization（Display Name `CueScore Pro`／Description）を追加した。
 2. 日本だけを販売対象としてavailabilityを作成し、JPN基準の即時価格schedule `¥980`を維持した。
 3. 1170×2532のIAP審査用スクリーンショットを登録し、Apple側の画像処理`COMPLETE`を確認した。IAPの審査提出は行っていない。
-4. Pro画面を開いた時とアプリがforegroundへ戻った時に商品・entitlementを再取得する。商品取得が一時失敗してもverified entitlementをFreeへ降格しない。
-5. Product ID、商品取得、StoreKit価格、購入結果、verified entitlement、再取得、Restore、Pro範囲、Free最新20件を回帰テストへ固定した。
+4. Review Notesへ解放機能と購入画面への入口を登録した。API上の必須商品情報は揃ったが、直後の状態表示は反映待ちの`MISSING_METADATA`である。
+5. Pro画面を開いた時とアプリがforegroundへ戻った時に商品・entitlementを再取得する。商品取得が一時失敗してもverified entitlementをFreeへ降格しない。
+6. Product ID、商品取得、StoreKit価格、購入結果、verified entitlement、再取得、Restore、Pro範囲、Free最新20件を回帰テストへ固定した。
 
 ## 検証
 
 - 全自動テスト: `382 pass / 0 fail / 0 skipped`
 - Release iOS Simulator: `BUILD SUCCEEDED`
+- Release device archive／IPA export: PASS
+- 実装commit: `db682d1`（main反映済み）
+- App Store Connect Build ID: `cb98d62a-3a43-45c6-8c45-b8f5a72c2486`。`processingState=VALID`、`usesNonExemptEncryption=false`、Internal group `CueScore Internal Testers`の一覧先頭にBuild 66があることを確認した。
 - App Store Connect metadata変更はSandboxへ反映されるまで最大1時間かかる場合があるため、TestFlight実機での`¥980`表示・購入sheet・購入後解放・再起動維持・復元はProduct Owner確認待ち。
 - External TestFlight、App Review提出、一般公開は実施しない。

@@ -4,7 +4,7 @@
 
 - TestFlightで`価格を取得できません`となる原因は、App Store ConnectのIAP `com.takaakimailboxstar.cuescoreapps.pro`が日本語localization 0件・availability未作成の`MISSING_METADATA`だったこと。日本語表示、JPN availability、即時価格`¥980`、1170×2532審査用画像を登録した（IAP審査提出は未実施）。metadata反映には最大1時間かかる場合がある。
 - Pro画面open／foreground復帰時の商品・verified entitlement再取得を追加し、商品取得の一時失敗で既存Pro entitlementをFreeへ降格しないよう補強。Product ID、StoreKit公式価格、購入結果、verified entitlement、再起動／Restore契約、Free最新20件をテストへ固定した。
-- 全自動test `382 pass / 0 fail / 0 skipped`、Release iOS Simulator `BUILD SUCCEEDED`。実iPhoneでの`¥980`表示、購入sheet、購入後解放、再起動維持、RestoreはProduct Owner確認待ち。External TestFlight、App Review提出、一般公開は実施しない。詳細：`docs/implementation/CueScore_Build66_IAP_Product_Availability_Diagnosis_2026-09-07.md`。
+- 全自動test `382 pass / 0 fail / 0 skipped`、Release iOS Simulator、device archive、IPA exportをPASS。実装commit `db682d1`をmainへ反映。App Store Connect Build ID `cb98d62a-3a43-45c6-8c45-b8f5a72c2486`は`VALID`、輸出コンプライアンス`usesNonExemptEncryption=false`、Internal group `CueScore Internal Testers`の一覧先頭にBuild 66があることを確認した。実iPhoneでの`¥980`表示、購入sheet、購入後解放、再起動維持、RestoreはProduct Owner確認待ち。External TestFlight、App Review提出、一般公開は実施しない。詳細：`docs/implementation/CueScore_Build66_IAP_Product_Availability_Diagnosis_2026-09-07.md`。
 
 ## Build 65 法務画面Back時スプラッシュ修正（2026年9月5日）
 
